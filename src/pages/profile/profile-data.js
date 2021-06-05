@@ -37,6 +37,7 @@ const data = {
   },
   profile: {
     avatar: myAratarIcon,
+    name: "Александр",
     data: [
       {
         key: "Почта",
