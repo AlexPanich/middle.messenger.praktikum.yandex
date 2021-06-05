@@ -68,27 +68,27 @@ const data = {
     name: "Ольга",
     data: [
       {
-        key: "Почта",
+        ruName: "Почта",
         value: "olga.buzova@yandex.ru",
       },
       {
-        key: "Логин",
+        ruName: "Логин",
         value: "olyabus",
       },
       {
-        key: "Имя",
+        ruName: "Имя",
         value: "Ольга",
       },
       {
-        key: "Фамилия",
+        ruName: "Фамилия",
         value: "Бузова",
       },
       {
-        key: "Имя в чате",
+        ruName: "Имя в чате",
         value: "Ольга",
       },
       {
-        key: "Телефон",
+        ruName: "Телефон",
         value: "+7 (999) 777 55 00",
       },
     ],

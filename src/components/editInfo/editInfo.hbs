@@ -1,0 +1,20 @@
+<div class="edit-info">
+  <form id="editInfoForm" class="edit-info__form">
+    <ul class="edit-info__list">
+      {{#each this}}
+        <li class="edit-info__item">
+          <div class="edit-info__key">{{ruName}}</div>
+          <div class="edit-info__value">
+            <input
+              class="edit-info__field"
+              type={{type}}
+              name={{name}}
+              value="{{value}}"
+            />
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+    <button class="edit-info__submit-button" type="submit">Сохранить</button>
+  </form>
+</div>

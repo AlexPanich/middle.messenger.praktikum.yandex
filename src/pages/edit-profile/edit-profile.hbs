@@ -2,10 +2,7 @@
   {{#*inline "left"}}
     {{> controls this.controls}}
   {{/inline}}
-  {{#*inline "center"}}
-    {{> contacts this.contacts type="users"}}
-  {{/inline}}
   {{#*inline "right"}}
-    {{> profileContent this.profile}}
+    {{> profileContent this.profile edit=true changeAvatar=true}}
   {{/inline}}
 {{/layout}}

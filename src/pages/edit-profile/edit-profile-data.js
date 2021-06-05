@@ -19,11 +19,11 @@ const data = {
     center: [
       {
         icon: infoIcon,
-        active: true,
+        link: "/profile.html",
       },
       {
-        link: "/edit-profile.html",
         icon: editIcon,
+        active: true,
       },
       {
         link: "/change-password.html",
@@ -37,31 +37,42 @@ const data = {
   },
   profile: {
     avatar: myAratarIcon,
-    name: "Александр",
     data: [
       {
+        name: "email",
         ruName: "Почта",
         value: "aleksandr@yandex.ru",
+        type: "text",
       },
       {
+        name: "login",
         ruName: "Логин",
         value: "aleksivanov",
+        type: "text",
       },
       {
+        name: "firstName",
         ruName: "Имя",
         value: "Александр",
+        type: "text",
       },
       {
+        name: "lastName",
         ruName: "Фамилия",
         value: "Иванов",
+        type: "text",
       },
       {
+        name: "nickName",
         ruName: "Имя в чате",
         value: "Шурик",
+        type: "text",
       },
       {
+        name: "phone",
         ruName: "Телефон",
         value: "+7 (909) 967 30 30",
+        type: "text",
       },
     ],
   },
