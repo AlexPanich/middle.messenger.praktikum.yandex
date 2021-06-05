@@ -2,9 +2,7 @@
 
 Макет в Figma [ссылка](https://www.figma.com/file/I9J3FmYRupdxaTsLpfENMU/Sprint1)
 
-Netlify [ссылка]()
-
-Ссылка на [PR]()
+Netlify [ссылка](https://pensive-curran-65e038.netlify.app/chat.htmll)
 
 ## Описания
 
