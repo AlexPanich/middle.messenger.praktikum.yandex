@@ -1,0 +1,62 @@
+.message {
+  max-width: 60%;
+  padding: 16px;
+  padding-bottom: 25px;
+  border-radius: 8px;
+  font-weight: 400;
+  position: relative;
+  display: inline-block;
+
+  &--inc {
+    background-color: #ffffff;
+    color: #99a8b4;
+  }
+
+  &--out {
+    background-color: #54d38a;
+    color: #ffffff;
+    margin-left: auto;
+  }
+
+  &__time {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 12px;
+  }
+
+  &__attach {
+    height: 240px;
+    width: 240px;
+
+    & img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    margin-bottom: 16px;
+  }
+}
+
+.line {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 1px;
+  background-color: #c4ced9;
+  margin-bottom: 24px;
+
+  &__text {
+    color: #c4ced9;
+    padding: 0 16px;
+    height: 24px;
+    line-height: 24px;
+    display: inline;
+    background-color: #f2f7f7;
+  }
+}

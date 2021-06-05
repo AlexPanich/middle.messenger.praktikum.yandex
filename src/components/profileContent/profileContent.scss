@@ -1,0 +1,23 @@
+.profileContent {
+  width: 100%;
+  height: 100%;
+  background-color: #f2f7f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__avatar {
+    margin-top: 136px;
+    margin-bottom: 40px;
+  }
+
+  &__name {
+    font-size: 32px;
+    color: #444e59;
+    margin-bottom: 34px;
+  }
+
+  &__info {
+  }
+}

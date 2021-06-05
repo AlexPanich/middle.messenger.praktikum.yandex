@@ -1,0 +1,11 @@
+{{#> layout}}
+  {{#*inline "left"}}
+    {{> controls this.controls}}
+  {{/inline}}
+  {{#*inline "center"}}
+    {{> contacts this.contacts type="chat"}}
+  {{/inline}}
+  {{#*inline "right"}}
+    {{> messager this.messager}}
+  {{/inline}}
+{{/layout}}

@@ -1,0 +1,71 @@
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 96px;
+  background-color: #363e47;
+
+  &__avatar {
+    height: 96px;
+    width: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  &__content {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 28px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__nickName {
+    color: #f7f7f8;
+  }
+
+  &__message {
+    color: #76828c;
+    font-weight: 400;
+  }
+
+  &__extra {
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    min-width: 48px;
+    padding: 0 16px;
+    margin-left: auto;
+  }
+
+  &__time {
+    color: #76828c;
+    font-size: 12px;
+    margin-top: 24px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    white-space: nowrap;
+  }
+
+  &__new {
+    width: 24px;
+    height: 24px;
+    color: #eff5f1;
+    border-radius: 50%;
+    background-color: #55d48b;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 16px;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+}

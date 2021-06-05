@@ -1,0 +1,13 @@
+{{#> layout}}
+  {{#*inline "left"}}
+    {{> controls this.controls}}
+  {{/inline}}
+  {{#*inline "center"}}
+    {{> contacts this.contacts type="chat"}}
+  {{/inline}}
+  {{#*inline "right"}}
+    <div class="change-chat__empty">
+      <div class="change-chat__message">{{content.message}}</div>
+    </div>
+  {{/inline}}
+{{/layout}}

@@ -1,0 +1,13 @@
+@import "reset";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
