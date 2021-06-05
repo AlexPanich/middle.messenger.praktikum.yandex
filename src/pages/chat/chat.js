@@ -16,5 +16,5 @@ const messagerForm = document.getElementById("messagerForm");
 messagerForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const data = new FormData(event.target);
-  console.log(data.getAll("message"));
+  console.log(data.get("message"));
 });
