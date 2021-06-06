@@ -1,9 +1,11 @@
-import template from "./messageElem.hbs";
-import line from "./line.hbs";
-import message from "./message.hbs";
-import "./messageElem.scss";
 import Handlebars from "handlebars/dist/handlebars.runtime";
+import compiledTemplate from "./messageElem.hbs";
+import lineCompiledTemplate from "./line.hbs";
+import messageCompiledTemplate from "./message.hbs";
+import "./messageElem.scss";
 
-Handlebars.registerPartial({ line, message });
-
-export default template;
+Handlebars.registerPartial({
+  line: lineCompiledTemplate,
+  message: messageCompiledTemplate,
+  messageElem: compiledTemplate,
+});

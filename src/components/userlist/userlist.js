@@ -1,4 +1,5 @@
-import template from "./userlist.hbs";
+import Handlebars from "handlebars/dist/handlebars.runtime";
+import compiledTemplate from "./userlist.hbs";
 import "./userlist.scss";
 
-export default template;
+Handlebars.registerPartial({ userlist: compiledTemplate });

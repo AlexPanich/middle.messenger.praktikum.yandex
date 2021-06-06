@@ -1,11 +1,9 @@
-import Handlebars from "handlebars/dist/handlebars.runtime";
-import template from "./page404.hbs";
+import compiledTemplate from "./page404.hbs";
 import data from "./page404-data";
+import "../../helpers/helpers";
+import "../../layouts/empty/empty";
+import "../../components/errorPageContent/errorPageContent";
 import "./page404.scss";
-import layout from "../../layouts/empty/empty";
-import errorPageContent from "../../components/errorPageContent/errorPageContent";
-
-Handlebars.registerPartial({ layout, errorPageContent });
 
 const app = document.getElementById("app");
-app.innerHTML = template(data);
+app.innerHTML = compiledTemplate(data);

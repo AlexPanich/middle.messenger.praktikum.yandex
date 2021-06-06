@@ -1,10 +1,8 @@
-import template from "./messager.hbs";
-import "./messager.scss";
 import Handlebars from "handlebars/dist/handlebars.runtime";
-import messagerContact from "../messagerContact/messagerContact";
-import messagerList from "../messagerList/messagerList";
-import messagerForm from "../messagerForm/messagerForm";
+import compiledTemplate from "./messager.hbs";
+import "../messagerContact/messagerContact";
+import "../messagerList/messagerList";
+import "../messagerForm/messagerForm";
+import "./messager.scss";
 
-Handlebars.registerPartial({ messagerContact, messagerList, messagerForm });
-
-export default template;
+Handlebars.registerPartial({ messager: compiledTemplate });

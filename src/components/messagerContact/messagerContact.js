@@ -1,4 +1,6 @@
-import template from './messagerContact.hbs';
-import './messagerContact.scss';
+import Handlebars from "handlebars/dist/handlebars.runtime";
+import compiledTemplate from "./messagerContact.hbs";
+import "../avatar/avatar";
+import "./messagerContact.scss";
 
-export default template;
+Handlebars.registerPartial({ messagerContact: compiledTemplate });

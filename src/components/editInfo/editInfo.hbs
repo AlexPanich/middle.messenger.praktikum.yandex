@@ -1,7 +1,11 @@
 <div class="edit-info">
-  <form id="editInfoForm" class="edit-info__form">
+  <form
+    class="edit-info__form"
+    data-component-name="edit-info"
+    data-redirect-url={{redirectUrl}}
+  >
     <ul class="edit-info__list">
-      {{#each this}}
+      {{#each data}}
         <li class="edit-info__item">
           <div class="edit-info__key">{{ruName}}</div>
           <div class="edit-info__value">

@@ -1,4 +1,5 @@
-import template from "./avatar.hbs";
+import Handlebars from "handlebars/dist/handlebars.runtime";
+import compiledTemplate from "./avatar.hbs";
 import "./avatar.scss";
 
-export default template;
+Handlebars.registerPartial({ avatar: compiledTemplate });

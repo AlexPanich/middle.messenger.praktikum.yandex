@@ -1,15 +1,13 @@
-import Handlebars from "handlebars/dist/handlebars.runtime";
-import template from "./change-password.hbs";
+import compiledTemplate from "./change-password.hbs";
 import data from "./change-password-data";
+import "../../helpers/helpers";
+import "../../layouts/settings/settings";
+import "../../components/controls/controls";
+import "../../components/profileContent/profileContent";
 import "./change-password.scss";
-import layout from "../../layouts/base/base";
-import controls from "../../components/controls/controls";
-import profileContent from "../../components/profileContent/profileContent";
-
-Handlebars.registerPartial({ layout, controls, profileContent });
 
 const app = document.getElementById("app");
-app.innerHTML = template(data);
+app.innerHTML = compiledTemplate(data);
 
 const editInfoForm = document.getElementById("editInfoForm");
 editInfoForm.addEventListener("submit", (event) => {

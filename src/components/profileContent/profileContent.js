@@ -1,10 +1,8 @@
-import template from "./profileContent.hbs";
-import "./profileContent.scss";
 import Handlebars from "handlebars/dist/handlebars.runtime";
-import info from "../info/info";
-import editInfo from "../editInfo/editInfo";
-import avatar from "../avatar/avatar";
+import compiledTemplate from "./profileContent.hbs";
+import "./profileContent.scss";
+import "../info/info";
+import "../editInfo/editInfo";
+import "../avatar/avatar";
 
-Handlebars.registerPartial({ info, editInfo, avatar });
-
-export default template;
+Handlebars.registerPartial({ profileContent: compiledTemplate });

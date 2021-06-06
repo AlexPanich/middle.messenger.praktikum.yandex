@@ -1,7 +1,7 @@
 const data = {
   form: {
-    formId: "loginForm",
     title: "Вход",
+    redirectUrl: "/change-chat.html",
     fields: [
       {
         name: "login",

@@ -1,9 +1,7 @@
 import Handlebars from "handlebars/dist/handlebars.runtime";
-import template from "./contacts.hbs";
+import compiledTemplate from "./contacts.hbs";
+import "../search/search";
+import "../contact/contact";
 import "./contacts.scss";
-import search from "../search/search";
-import contact from "../contact/contact";
 
-Handlebars.registerPartial({ search, contact });
-
-export default template;
+Handlebars.registerPartial({ contacts: compiledTemplate });

@@ -1,4 +1,5 @@
-import template from "./errorPageContent.hbs";
+import Handlebars from "handlebars/dist/handlebars.runtime";
+import compiledTemplate from "./errorPageContent.hbs";
 import "./errorPageContent.scss";
 
-export default template;
+Handlebars.registerPartial({ errorPageContent: compiledTemplate });

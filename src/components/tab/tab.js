@@ -1,8 +1,6 @@
-import template from "./tab.hbs";
-import "./tab.scss";
 import Handlebars from "handlebars/dist/handlebars.runtime";
-import avatar from "../avatar/avatar";
+import compiledTemplate from "./tab.hbs";
+import "../avatar/avatar";
+import "./tab.scss";
 
-Handlebars.registerPartial({ avatar });
-
-export default template;
+Handlebars.registerPartial({ tab: compiledTemplate });

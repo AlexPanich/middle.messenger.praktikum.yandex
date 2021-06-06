@@ -10,11 +10,6 @@ import contact5Icon from "../../images/contact5.svg";
 import contact6Icon from "../../images/contact6.svg";
 
 const data = {
-  blocks: {
-    left: true,
-    center: true,
-    right: true,
-  },
   controls: {
     top: {
       link: "/profile.html",

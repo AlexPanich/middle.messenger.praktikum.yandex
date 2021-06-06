@@ -1,17 +1,11 @@
 <main class="layout-base">
-{{#if blocks.left}}
-<div class="layout-base__item layout-base__left">
-  {{> left}}
-</div>
-{{/if}}
-{{#if blocks.center}}
-<div class="layout-base__item layout-base__center">
-  {{> center}}
-</div>
-{{/if}}
-{{#if blocks.right}}
-<div class="layout-base__item layout-base__right">
-  {{> right}}
-</div>
-{{/if}}
+  <div class="layout-base__item layout-base__left">
+    {{> left}}
+  </div>
+  <div class="layout-base__item layout-base__center">
+    {{> center}}
+  </div>
+  <div class="layout-base__item layout-base__right">
+    {{> right}}
+  </div>
 </main>

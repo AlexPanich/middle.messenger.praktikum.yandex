@@ -6,11 +6,6 @@ import editIcon from "../../images/edit-icon.svg";
 import changePasswordIcon from "../../images/change-password-icon.svg";
 
 const data = {
-  blocks: {
-    left: true,
-    center: false,
-    right: true,
-  },
   controls: {
     top: {
       link: "/change-chat.html",

@@ -1,4 +1,5 @@
-import template from "./info.hbs";
+import Handlebars from "handlebars/dist/handlebars.runtime";
+import compiledTemplate from "./info.hbs";
 import "./info.scss";
 
-export default template;
+Handlebars.registerPartial({ info: compiledTemplate });

@@ -8,12 +8,14 @@
       <div class="contact__message">{{message}}</div>
     {{/if}}
   </div>
-  <div class="contact__extra">
-    {{#if time}}
-      <div class="contact__time">{{time}}</div>
-    {{/if}}
-    {{#if newMessages}}
-      <div class="contact__new">{{newMessages}}</div>
-    {{/if}}
-  </div>
+  {{#if (and time newMessages)}}
+    <div class="contact__extra">
+      {{#if time}}
+        <div class="contact__time">{{time}}</div>
+      {{/if}}
+      {{#if newMessages}}
+        <div class="contact__new">{{newMessages}}</div>
+      {{/if}}
+    </div>
+  {{/if}}
 </div>

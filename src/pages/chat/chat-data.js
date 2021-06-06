@@ -11,11 +11,6 @@ import contact6Icon from "../../images/contact6.svg";
 import catImage from "../../images/cat.png";
 
 const data = {
-  blocks: {
-    left: true,
-    center: true,
-    right: true,
-  },
   controls: {
     top: {
       link: "/profile.html",
