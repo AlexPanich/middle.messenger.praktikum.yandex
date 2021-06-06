@@ -1,0 +1,37 @@
+@import "../../scss/global.scss";
+
+body,
+html,
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.layout-base {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  min-width: 1200px;
+
+  &__item {
+    height: 100%;
+  }
+
+  &__left {
+    flex-basis: 96px;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  &__center {
+    flex-basis: 336px;
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+
+  &__right {
+    flex-basis: 1108px;
+    flex-grow: 1;
+    flex-shrink: 4;
+  }
+}

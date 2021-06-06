@@ -1,0 +1,19 @@
+<div class="tab{{#if active}} active{{/if}}">
+  {{#if active}}
+    <div class="tab__link">
+      {{#if avatar}}
+        {{> avatar link=avatar size=64}}
+      {{else}}
+        <img  class="tab__icon" src={{icon}}>
+      {{/if}}
+    </div>
+  {{else}}
+    <a class="tab__link" href={{link}}>
+      {{#if avatar}}
+        {{> avatar link=avatar size=64}}
+      {{else}}
+        <img class="tab__icon" src={{icon}}>
+      {{/if}}
+    </a>
+  {{/if}}
+</div>

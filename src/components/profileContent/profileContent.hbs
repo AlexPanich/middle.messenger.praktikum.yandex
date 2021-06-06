@@ -1,0 +1,23 @@
+<div class="profileContent">
+  <div class="profileContent__avatar{{#unless name}} profileContent__avatar--big-margin{{/unless}}">
+    {{#if changeAvatar}}
+      <button class="profileContent__change-avatar" type="button">
+        {{> avatar link=avatar size=192}}
+        <div class="profileContent__avatar-overlay"></div>
+        <div class="profileContent__change-avatar-text">Поменять аватар</div>
+      </button>
+    {{else}}
+      {{> avatar link=avatar size=192}}
+    {{/if}}
+  </div>
+  {{#if name}}
+    <div class="profileContent__name">{{name}}</div>
+  {{/if}}
+  <div class="profileContent__info">
+    {{#if edit}}
+      {{> editInfo }}
+    {{else}}
+      {{> info data}}
+    {{/if}}
+  </div>
+</div>

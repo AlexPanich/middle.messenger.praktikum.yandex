@@ -1,0 +1,33 @@
+.messager-contact {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #f2f7f7;
+  align-items: center;
+
+  &__avatar {
+    width: 96px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__action-button {
+    outline: none;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: transparent;
+    background-image: url("../../images/user-actions-icon.svg");
+    background-position: center;
+    background-size: 4px 20px;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: 16px;
+    cursor: pointer;
+  }
+}
