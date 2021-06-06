@@ -6,7 +6,7 @@ Handlebars.registerPartial({ form: compiledTemplate });
 
 document.addEventListener("DOMContentLoaded", () => {
   const forms = Array.from(
-    document.querySelectorAll('[data-component-name="form"')
+    document.querySelectorAll('[data-component-name="form"]')
   );
   forms.forEach((form) => {
     form.addEventListener("submit", (event) => {

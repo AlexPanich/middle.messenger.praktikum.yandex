@@ -6,7 +6,7 @@ Handlebars.registerPartial({ editInfo: compiledTemplate });
 
 document.addEventListener("DOMContentLoaded", () => {
   const forms = Array.from(
-    document.querySelectorAll('[data-component-name="edit-info"')
+    document.querySelectorAll('[data-component-name="edit-info"]')
   );
   forms.forEach((form) => {
     form.addEventListener("submit", (event) => {
