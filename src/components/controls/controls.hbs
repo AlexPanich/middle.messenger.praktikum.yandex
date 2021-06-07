@@ -1,0 +1,13 @@
+<div class="controls">
+  <div class="controls__top">
+    {{> tab this.top}}
+  </div>
+  <div class="controls__center">
+    {{#each this.center }}
+      {{> tab this}}
+    {{/each}}
+  </div>
+  <div class="conrols__botton">
+    {{> tab this.bottom}}
+  </div>
+</div>

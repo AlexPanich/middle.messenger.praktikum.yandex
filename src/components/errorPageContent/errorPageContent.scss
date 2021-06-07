@@ -1,0 +1,27 @@
+.error-page {
+  margin-top: -200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__code {
+    font-size: 72px;
+    color: #f7f7f8;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  &__message {
+    font-size: 48px;
+    font-weight: 400;
+    color: #f7f7f8;
+    margin-bottom: 52px;
+    text-align: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #54d38a;
+  }
+}

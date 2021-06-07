@@ -1,0 +1,21 @@
+<div class="contact">
+  <div class="contact__avatar">
+    {{> avatar link=avatar size=64}}
+  </div>
+  <div class="contact__content">
+      <div class="contact__nickName">{{nickName}}</div>
+    {{#if message}}
+      <div class="contact__message">{{message}}</div>
+    {{/if}}
+  </div>
+  {{#if (and time newMessages)}}
+    <div class="contact__extra">
+      {{#if time}}
+        <div class="contact__time">{{time}}</div>
+      {{/if}}
+      {{#if newMessages}}
+        <div class="contact__new">{{newMessages}}</div>
+      {{/if}}
+    </div>
+  {{/if}}
+</div>

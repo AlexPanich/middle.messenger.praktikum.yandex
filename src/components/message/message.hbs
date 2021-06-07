@@ -1,0 +1,11 @@
+<div class="message message--{{class}}">
+  {{#if attachLink}}
+    <div class="message__attach">
+      <img src={{attachLink}} />
+    </div>
+  {{/if}}
+  {{#if text}}
+    <div class="message__text">{{text}}</div>
+  {{/if}}
+  <div class="message__time">{{time}}</div>
+</div>

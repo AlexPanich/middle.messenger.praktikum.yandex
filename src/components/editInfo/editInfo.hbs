@@ -1,0 +1,24 @@
+<div class="edit-info">
+  <form
+    class="edit-info__form"
+    data-component-name="edit-info"
+    data-redirect-url={{redirectUrl}}
+  >
+    <ul class="edit-info__list">
+      {{#each data}}
+        <li class="edit-info__item">
+          <div class="edit-info__key">{{ruName}}</div>
+          <div class="edit-info__value">
+            <input
+              class="edit-info__field"
+              type={{type}}
+              name={{name}}
+              value="{{value}}"
+            />
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+    <button class="edit-info__submit-button" type="submit">Сохранить</button>
+  </form>
+</div>
