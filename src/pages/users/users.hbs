@@ -1,11 +1,11 @@
 {{#> baseLayout}}
   {{#*inline "left"}}
-    {{> controls this.controls}}
+    {{component 'controls' components}}
   {{/inline}}
   {{#*inline "center"}}
-    {{> contacts this.contacts type="users"}}
+    {{component 'contacts' components}}
   {{/inline}}
   {{#*inline "right"}}
-    {{> profileContent this.profile}}
+     {{component 'profileContent' components}}
   {{/inline}}
 {{/baseLayout}}

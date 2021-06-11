@@ -1,13 +1,13 @@
 {{#> baseLayout}}
   {{#*inline "left"}}
-    {{> controls this.controls}}
+    {{component 'controls' components}}
   {{/inline}}
   {{#*inline "center"}}
-    {{> contacts this.contacts type="chat"}}
+    {{component 'contacts' components}}
   {{/inline}}
   {{#*inline "right"}}
     <div class="change-chat__empty">
-      <div class="change-chat__message">{{content.message}}</div>
+      <div class="change-chat__message">{{message}}</div>
     </div>
   {{/inline}}
 {{/baseLayout}}
