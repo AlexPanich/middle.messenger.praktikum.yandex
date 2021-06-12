@@ -26,7 +26,7 @@
   "dependencies": {
     "data": "^0.6.1",
     "express": "^4.17.1",
-    "parcel-plugin-handlebars-precompile": "git+https://github.com/AlexPanich/parcel-plugin-handlebars-precompile.git",
+    "parcel-plugin-handlebars-precompile-ts": "^1.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
