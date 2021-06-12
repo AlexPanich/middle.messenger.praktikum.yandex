@@ -1,5 +1,5 @@
 <ul class="messager-list">
-  {{#each this}}
-    <li>{{> messageElem}}</li>
+  {{#each components.list}}
+    <li>{{component @key ../components/list}}</li>
   {{/each}}
 </ul>

@@ -1,11 +1,11 @@
 {{#> baseLayout}}
   {{#*inline "left"}}
-    {{> controls this.controls}}
+    {{component 'controls' components}}
   {{/inline}}
   {{#*inline "center"}}
-    {{> contacts this.contacts type="chat"}}
+    {{component 'contacts' components}}
   {{/inline}}
   {{#*inline "right"}}
-    {{> messager this.messager}}
+    {{component 'messager' components}}
   {{/inline}}
 {{/baseLayout}}

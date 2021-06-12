@@ -2,12 +2,12 @@
   <div class="profileContent__avatar{{#unless name}} profileContent__avatar--big-margin{{/unless}}">
     {{#if changeAvatar}}
       <button class="profileContent__change-avatar" type="button">
-        {{> avatar link=avatar size=192}}
+        {{ component 'avatar' components}}
         <div class="profileContent__avatar-overlay"></div>
         <div class="profileContent__change-avatar-text">Поменять аватар</div>
       </button>
     {{else}}
-      {{> avatar link=avatar size=192}}
+      {{ component 'avatar' components}}
     {{/if}}
   </div>
   {{#if name}}
@@ -15,9 +15,9 @@
   {{/if}}
   <div class="profileContent__info">
     {{#if edit}}
-      {{> editInfo }}
+      {{component 'editInfo' components}}
     {{else}}
-      {{> info data}}
+      {{component 'info' components}}
     {{/if}}
   </div>
 </div>

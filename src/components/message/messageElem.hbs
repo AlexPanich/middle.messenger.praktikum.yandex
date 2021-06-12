@@ -1,9 +1,33 @@
 {{#if line}}
-  {{> line}}
+  <div class="line"><div class="line__text">{{text}}</div></div>
 {{/if}}
 {{#if inc}}
-  <div class="message__wrapper">{{> message class='inc'}}</div>
+  <div class="message__wrapper">
+    <div class="message message--inc">
+      {{#if attachLink}}
+        <div class="message__attach">
+          <img src={{attachLink}} />
+        </div>
+      {{/if}}
+      {{#if text}}
+        <div class="message__text">{{text}}</div>
+      {{/if}}
+      <div class="message__time">{{time}}</div>
+    </div>
+  </div>
 {{/if}}
 {{#if out}}
-  <div class="message__wrapper">{{> message class='out'}}</div>
+  <div class="message__wrapper">
+    <div class="message message--out">
+      {{#if attachLink}}
+        <div class="message__attach">
+          <img src={{attachLink}} />
+        </div>
+      {{/if}}
+      {{#if text}}
+        <div class="message__text">{{text}}</div>
+      {{/if}}
+      <div class="message__time">{{time}}</div>
+    </div>
+  </div>
 {{/if}}

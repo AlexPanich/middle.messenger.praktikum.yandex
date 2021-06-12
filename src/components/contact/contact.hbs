@@ -1,9 +1,9 @@
 <div class="contact">
   <div class="contact__avatar">
-    {{> avatar link=avatar size=64}}
+    {{component "avatar" components}}
   </div>
   <div class="contact__content">
-      <div class="contact__nickName">{{nickName}}</div>
+    <div class="contact__nickName">{{nickName}}</div>
     {{#if message}}
       <div class="contact__message">{{message}}</div>
     {{/if}}

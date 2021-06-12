@@ -1,13 +1,13 @@
 <div class="controls">
   <div class="controls__top">
-    {{> tab this.top}}
+    {{component "top" components}}
   </div>
   <div class="controls__center">
-    {{#each this.center }}
-      {{> tab this}}
+    {{#each components.center}}
+      {{component @key ../components/center}}
     {{/each}}
   </div>
   <div class="conrols__botton">
-    {{> tab this.bottom}}
+    {{component "bottom" components}}
   </div>
 </div>
