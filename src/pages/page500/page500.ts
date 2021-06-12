@@ -23,11 +23,8 @@ export default class Page500 extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      components: {
-        errorPageContent: this.getChildId("errorPageContent"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }
 

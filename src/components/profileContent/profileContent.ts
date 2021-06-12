@@ -47,19 +47,15 @@ export default class ProfileContent extends Block {
   }
 
   render() {
-    const { edit } = this.props;
-    const components: { [name: string]: string | null } = {
-      avatar: this.getChildId("avatar"),
-    };
-    if (edit) {
+    const components: { [name: string]: string } = {};
+    if (this.props.edit) {
       components["editInfo"] = this.getChildId("editInfo");
     } else {
       components["info"] = this.getChildId("info");
     }
 
-    return compiledTemplate({
-      ...this.props,
-      components,
-    });
+    const context = this.createCompileContext({ components });
+
+    return compiledTemplate(context);
   }
 }

@@ -23,11 +23,8 @@ export default class Page404 extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      components: {
-        errorPageContent: this.getChildId("errorPageContent"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }
 

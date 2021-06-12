@@ -2,6 +2,10 @@ import { EventBus } from "./event-bus";
 import { v4 as makeUUID } from "uuid";
 import { htmlToDocumentFragment } from "./utils";
 
+type CompileContext = {
+  [key: string]: any;
+};
+
 export type Events = {
   selector: string;
   eventName: string;
@@ -203,6 +207,43 @@ export abstract class Block {
       return null;
     }
     return child.component;
+  }
+
+  public createCompileContext(
+    customContext: CompileContext = {}
+  ): CompileContext {
+    const context = { ...this.props };
+    if (context.events) {
+      delete context.events;
+    }
+
+    context.components = Object.entries(this.children).reduce<{
+      [name: string]: string;
+    }>((acc, [name, child]) => {
+      acc[name] = child.component.id;
+      return acc;
+    }, {});
+
+    const { components: customComponents, ...restCustomContext } =
+      customContext;
+    if (customComponents) {
+      context.components = { ...context.components, ...customComponents };
+    }
+    return { ...context, ...restCustomContext };
+  }
+
+  public createComponentsList(
+    list: any[],
+    prefix: string
+  ): { [name: string]: string } {
+    return list.reduce((acc, _: any, index: number) => {
+      const id = this.getChildId(`${prefix}${index}`);
+      if (!id) {
+        return acc;
+      }
+      acc[index] = id;
+      return acc;
+    }, {});
   }
 
   protected _makePropsProxy(props: Props): Props {

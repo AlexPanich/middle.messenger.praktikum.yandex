@@ -39,13 +39,8 @@ export default class Users extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      components: {
-        controls: this.getChildId("controls"),
-        contacts: this.getChildId("contacts"),
-        profileContent: this.getChildId("profileContent"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }
 

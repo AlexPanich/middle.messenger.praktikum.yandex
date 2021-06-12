@@ -11,7 +11,7 @@ export type Props = {
   newMessages?: number;
 };
 
-export default class Tab extends Block {
+export default class Contact extends Block {
   constructor(props: Props) {
     super(props, {
       avatar: {
@@ -22,11 +22,7 @@ export default class Tab extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      ...this.props,
-      components: {
-        avatar: this.getChildId("avatar"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }

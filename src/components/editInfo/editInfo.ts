@@ -1,6 +1,10 @@
 import { Block } from "../../framework/block";
 import { Validate } from "../../framework/validator";
 import compiledTemplate from "./editInfo.hbs";
+import {
+  getDefaultListenerForFormSubmit,
+  getDefaultListenersForValidation,
+} from "../../helpers/validateHelpers";
 import "./editInfo.scss";
 
 export type EditInfoItem = {
@@ -25,58 +29,22 @@ export default class EditInfo extends Block {
     super({
       ...restProps,
       events: [
-        {
-          selector: "input",
-          eventName: "blur",
-          listener: (event: Event) => {
-            const input = event.target as HTMLInputElement;
-            const result = validator.test(input.name, input.value);
-            console.log(result);
-          },
-        },
-        {
-          selector: "input",
-          eventName: "focus",
-          listener: (event: Event) => {
-            const input = event.target as HTMLInputElement;
-            console.log(input.name, input.value);
-          },
-        },
-        {
-          selector: "form",
-          eventName: "submit",
-          listener: (event: Event) => {
-            event.preventDefault();
-            const form = event.target as HTMLFormElement;
-            const fields = form.querySelectorAll("[data-field]");
-            const isValid = Array.from(fields).every(
-              (field: HTMLInputElement) => {
-                const result = validator.test(field.name, field.value);
-                if (result === true) {
-                  return true;
-                }
-                return false;
-              }
-            );
-            console.log(isValid);
-            const formData = new FormData(form);
-            const data = Array.from(formData.entries()).reduce<{
-              [key: string]: string;
-            }>((acc, [key, value]) => {
-              acc[key] = value.toString();
-              return acc;
-            }, {});
-            console.log(data, "1");
-            if (form.dataset.redirectUrl) {
-              window.location.pathname = form.dataset.redirectUrl;
-            }
-          },
-        },
+        ...getDefaultListenersForValidation(
+          validator,
+          "input",
+          "edit-info__value--error"
+        ),
+        getDefaultListenerForFormSubmit(
+          validator,
+          "form",
+          "edit-info__value--error"
+        ),
       ],
     });
   }
 
   render() {
-    return compiledTemplate({ ...this.props });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }

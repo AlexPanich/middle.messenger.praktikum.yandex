@@ -1,4 +1,5 @@
 import { Block } from "../../framework/block";
+import { createListChildrenProps } from "../../framework/utils";
 import compiledTemplate from "./messagerList.hbs";
 import MessageElem, { Props as MessageElemProps } from "../message/messageElem";
 import "./messagerList.scss";
@@ -9,25 +10,21 @@ export type Props = {
 
 export default class MessagerList extends Block {
   constructor(props: Props) {
-    super(props, {
-      ...props.list.reduce<any>((acc, _, index) => {
-        acc[`message${index}`] = {
-          component: MessageElem,
-          getProps: (props: Props) => ({ ...props.list[index] }),
-        };
-        return acc;
-      }, {}),
-    });
+    super(
+      props,
+      createListChildrenProps<
+        Props,
+        new (props: MessageElemProps) => MessageElem
+      >(props, "list", MessageElem, "message")
+    );
   }
 
   render() {
-    return compiledTemplate({
+    const context = this.createCompileContext({
       components: {
-        list: this.props.list.reduce((acc: any, _: any, index: number) => {
-          acc[index] = this.getChildId(`message${index}`);
-          return acc;
-        }, {}),
+        list: this.createComponentsList(this.props.list, "message"),
       },
     });
+    return compiledTemplate(context);
   }
 }
