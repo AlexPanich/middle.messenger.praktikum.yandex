@@ -1,5 +1,5 @@
 import { Block } from "../../framework/block";
-import Validator, { ValidateRules } from "../../framework/Validator";
+import Validator, { ValidateRules } from "../../framework/validator";
 import compiledTemplate from "./login.hbs";
 import "../../layouts/empty/empty";
 import "../../helpers/handlebarsHelpers";
@@ -14,12 +14,23 @@ type Props = {
 const validateRules: ValidateRules = {
   login: [
     {
-      rule: Validator.defaultRegexp.text,
-      errorMessage: "Недопустимые символы",
+      rule: (value) => value.length > 0,
+      errorMessage: "Обязательное поле",
+    },
+    {
+      rule: Validator.defaultRegexp.name,
+      errorMessage: "Что то не похоже на логин",
     },
   ],
   password: [
-    { rule: Validator.defaultRegexp.password, errorMessage: "Слишком простой" },
+    {
+      rule: (value) => value.length > 0,
+      errorMessage: "Обязательное поле",
+    },
+    {
+      rule: Validator.defaultRegexp.password,
+      errorMessage: "Слишком простой",
+    },
   ],
 };
 

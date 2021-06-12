@@ -3,7 +3,7 @@ import compiledTemplate from "./profileContent.hbs";
 import Aratar from "../avatar/avatar";
 import Info, { InfoItem } from "../info/info";
 import EditInfo, { EditInfoItem } from "../editInfo/editInfo";
-import { Validate } from "../../framework/Validator";
+import { Validate } from "../../framework/validator";
 import "./profileContent.scss";
 
 export type Props = {

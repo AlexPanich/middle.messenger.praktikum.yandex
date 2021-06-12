@@ -1,5 +1,5 @@
 import { Block } from "../../framework/block";
-import Validator, { ValidateRules } from "../../framework/Validator";
+import Validator, { ValidateRules } from "../../framework/validator";
 import compiledTemplate from "./edit-profile.hbs";
 import data from "./edit-profile-data";
 import "../../helpers/handlebarsHelpers";
