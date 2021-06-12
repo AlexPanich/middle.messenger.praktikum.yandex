@@ -1,5 +1,5 @@
 import { Block } from "../../framework/block";
-import { Validate } from "../../framework/Validator";
+import { Validate } from "../../framework/validator";
 import compiledTemplate from "./editInfo.hbs";
 import "./editInfo.scss";
 

@@ -1,5 +1,5 @@
 import { Block } from "../../framework/block";
-import { Validate } from "../../framework/Validator";
+import { Validate } from "../../framework/validator";
 import compiledTemplate from "./form.hbs";
 import "./form.scss";
 
@@ -36,7 +36,11 @@ export default class Form extends Block {
           listener: (event: Event) => {
             const input = event.target as HTMLInputElement;
             const result = validator.test(input.name, input.value);
-            console.log(result);
+            if (result !== true) {
+              const wrapper = input.parentElement as HTMLLIElement;
+              wrapper.setAttribute("data-error-text", result.join(" ,"));
+              wrapper.classList.add("form__field-wrapper--error");
+            }
           },
         },
         {
@@ -44,7 +48,9 @@ export default class Form extends Block {
           eventName: "focus",
           listener: (event: Event) => {
             const input = event.target as HTMLInputElement;
-            console.log(input.name, input.value);
+            const wrapper = input.parentElement as HTMLLIElement;
+            wrapper.removeAttribute("data-error-text");
+            wrapper.classList.add("form__field-wrapper--error");
           },
         },
         {

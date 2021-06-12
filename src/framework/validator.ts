@@ -6,12 +6,12 @@ export type ValidateRules = {
 };
 
 export interface Validate {
-  test: (fieldName: string, value: string) => boolean | string[];
+  test: (fieldName: string, value: string) => true | string[];
 }
 
 export default class Validator implements Validate {
   static defaultRegexp = {
-    text: /\w+/,
+    text: /[\s\w]*/,
     password: /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{8,}$/,
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     name: /^([А-Яа-яA-Za-z0-9_]{1,20})$/,

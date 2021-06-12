@@ -1,6 +1,6 @@
 import { Block } from "../../framework/block";
 import compiledTemplate from "./messagerForm.hbs";
-import Validator, { ValidateRules } from "../../framework/Validator";
+import Validator, { ValidateRules } from "../../framework/validator";
 import "./messagerForm.scss";
 
 type Props = {};
