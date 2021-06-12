@@ -33,12 +33,7 @@ export default class Messager extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      components: {
-        messagerContact: this.getChildId("messagerContact"),
-        messagerList: this.getChildId("messagerList"),
-        messagerForm: this.getChildId("messagerForm"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }

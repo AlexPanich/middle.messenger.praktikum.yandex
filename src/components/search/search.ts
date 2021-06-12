@@ -10,6 +10,7 @@ export default class Search extends Block {
   }
 
   render() {
-    return compiledTemplate(this.props);
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }

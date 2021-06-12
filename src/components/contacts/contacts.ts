@@ -1,4 +1,5 @@
 import { Block } from "../../framework/block";
+import { createListChildrenProps } from "../../framework/utils";
 import compiledTemplate from "./contacts.hbs";
 import Search from "../search/search";
 import Contact, { Props as ContactProps } from "../contact/contact";
@@ -16,26 +17,22 @@ export default class Contacts extends Block {
         component: Search,
         getProps: (_props: Props) => ({}),
       },
-      ...props.list.reduce<any>((acc, _, index) => {
-        acc[`contact${index}`] = {
-          component: Contact,
-          getProps: (props: Props) => ({ ...props.list[index] }),
-        };
-        return acc;
-      }, {}),
+      ...createListChildrenProps<Props, new (props: ContactProps) => Contact>(
+        props,
+        "list",
+        Contact,
+        "contact"
+      ),
     });
   }
 
   render() {
-    return compiledTemplate({
-      type: this.props.type,
+    const context = this.createCompileContext({
       components: {
-        search: this.getChildId("search"),
-        contacts: this.props.list.reduce((acc: any, _: any, index: number) => {
-          acc[index] = this.getChildId(`contact${index}`);
-          return acc;
-        }, {}),
+        contacts: this.createComponentsList(this.props.list, "contact"),
       },
     });
+
+    return compiledTemplate(context);
   }
 }

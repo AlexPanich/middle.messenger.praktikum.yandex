@@ -63,12 +63,8 @@ export default class EditProfile extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      components: {
-        controls: this.getChildId("controls"),
-        profileContent: this.getChildId("profileContent"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }
 

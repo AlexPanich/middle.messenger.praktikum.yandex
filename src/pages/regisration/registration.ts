@@ -51,11 +51,8 @@ export default class Registration extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      components: {
-        form: this.getChildId("form"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }
 

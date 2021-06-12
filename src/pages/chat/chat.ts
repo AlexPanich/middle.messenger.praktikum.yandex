@@ -39,13 +39,8 @@ export default class Chat extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      components: {
-        controls: this.getChildId("controls"),
-        contacts: this.getChildId("contacts"),
-        messager: this.getChildId("messager"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }
 

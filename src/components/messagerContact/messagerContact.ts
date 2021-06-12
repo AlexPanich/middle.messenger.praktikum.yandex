@@ -19,11 +19,7 @@ export default class MessagerContact extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      ...this.props,
-      components: {
-        avatar: this.getChildId("avatar"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }

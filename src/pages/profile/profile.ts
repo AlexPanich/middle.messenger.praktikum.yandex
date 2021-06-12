@@ -31,12 +31,8 @@ export default class Profile extends Block {
   }
 
   render() {
-    return compiledTemplate({
-      components: {
-        controls: this.getChildId("controls"),
-        profileContent: this.getChildId("profileContent"),
-      },
-    });
+    const context = this.createCompileContext();
+    return compiledTemplate(context);
   }
 }
 

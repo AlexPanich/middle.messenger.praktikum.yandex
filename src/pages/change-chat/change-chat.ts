@@ -34,13 +34,10 @@ export default class ChangeChat extends Block {
   }
 
   render() {
-    return compiledTemplate({
+    const context = this.createCompileContext({
       message: this.props.content.message,
-      components: {
-        controls: this.getChildId("controls"),
-        contacts: this.getChildId("contacts"),
-      },
     });
+    return compiledTemplate(context);
   }
 }
 
