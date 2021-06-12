@@ -33,8 +33,8 @@ export default class Profile extends Block {
   render() {
     return compiledTemplate({
       components: {
-        controls: this.getChildContent("controls"),
-        profileContent: this.getChildContent("profileContent"),
+        controls: this.getChildId("controls"),
+        profileContent: this.getChildId("profileContent"),
       },
     });
   }
@@ -43,4 +43,4 @@ export default class Profile extends Block {
 const profile = new Profile(data);
 
 const app = document.getElementById("app") as HTMLElement;
-app.append(profile.getContent());
+app.append(profile.getOuterElement());

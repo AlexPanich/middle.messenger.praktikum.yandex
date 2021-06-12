@@ -30,9 +30,9 @@ export default class Contacts extends Block {
     return compiledTemplate({
       type: this.props.type,
       components: {
-        search: this.getChildContent("search"),
+        search: this.getChildId("search"),
         contacts: this.props.list.reduce((acc: any, _: any, index: number) => {
-          acc[index] = this.getChildContent(`contact${index}`);
+          acc[index] = this.getChildId(`contact${index}`);
           return acc;
         }, {}),
       },

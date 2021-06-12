@@ -37,8 +37,8 @@ export default class ChangeChat extends Block {
     return compiledTemplate({
       message: this.props.content.message,
       components: {
-        controls: this.getChildContent("controls"),
-        contacts: this.getChildContent("contacts"),
+        controls: this.getChildId("controls"),
+        contacts: this.getChildId("contacts"),
       },
     });
   }
@@ -47,4 +47,4 @@ export default class ChangeChat extends Block {
 const changeChat = new ChangeChat(data);
 
 const app = document.getElementById("app") as HTMLElement;
-app.append(changeChat.getContent());
+app.append(changeChat.getOuterElement());

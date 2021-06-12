@@ -41,9 +41,9 @@ export default class Chat extends Block {
   render() {
     return compiledTemplate({
       components: {
-        controls: this.getChildContent("controls"),
-        contacts: this.getChildContent("contacts"),
-        messager: this.getChildContent("messager"),
+        controls: this.getChildId("controls"),
+        contacts: this.getChildId("contacts"),
+        messager: this.getChildId("messager"),
       },
     });
   }
@@ -52,4 +52,4 @@ export default class Chat extends Block {
 const chat = new Chat(data);
 
 const app = document.getElementById("app") as HTMLElement;
-app.append(chat.getContent());
+app.append(chat.getOuterElement());

@@ -23,7 +23,7 @@ export default class Tab extends Block {
     return compiledTemplate({
       ...this.props,
       components: {
-        avatar: this.getChildContent("avatar"),
+        avatar: this.getChildId("avatar"),
       },
     });
   }

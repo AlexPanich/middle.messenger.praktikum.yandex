@@ -443,10 +443,15 @@ declare module "handlebars/dist/handlebars.runtime" {
 
 declare module "*.svg" {
   const imageUrl: string;
-  export default imageUrl
+  export default imageUrl;
 }
 
 declare module "*.png" {
   const imageUrl: string;
-  export default imageUrl
+  export default imageUrl;
+}
+
+declare module "uuid" {
+  const f: () => string;
+  export const v4: typeof f;
 }

@@ -5,18 +5,9 @@ Handlebars.registerHelper("and", function (...args) {
 });
 
 Handlebars.registerHelper("component", function (name, components) {
-  const wrapper = components[name];
-  if (!wrapper) {
+  const id = components[name];
+  if (!id) {
     return "";
   }
-  const elem = components[name].firstElementChild;
-  return new Handlebars.SafeString(elem.outerHTML);
-});
-
-Handlebars.registerHelper("componentList", function (name, components) {
-  const list = [];
-  for (const item of components[name]) {
-    list.push(item.innerHTML);
-  }
-  return new Handlebars.SafeString(`${list.join("")}`);
+  return new Handlebars.SafeString(`<div data-replace-id=${id}></div>`);
 });

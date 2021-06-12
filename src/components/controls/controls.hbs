@@ -3,7 +3,9 @@
     {{component "top" components}}
   </div>
   <div class="controls__center">
-    {{componentList "center" components}}
+    {{#each components.center}}
+      {{component @key ../components/center}}
+    {{/each}}
   </div>
   <div class="conrols__botton">
     {{component "bottom" components}}

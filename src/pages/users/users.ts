@@ -41,9 +41,9 @@ export default class Users extends Block {
   render() {
     return compiledTemplate({
       components: {
-        controls: this.getChildContent("controls"),
-        contacts: this.getChildContent("contacts"),
-        profileContent: this.getChildContent("profileContent"),
+        controls: this.getChildId("controls"),
+        contacts: this.getChildId("contacts"),
+        profileContent: this.getChildId("profileContent"),
       },
     });
   }
@@ -52,4 +52,4 @@ export default class Users extends Block {
 const users = new Users(data);
 
 const app = document.getElementById("app") as HTMLElement;
-app.append(users.getContent());
+app.append(users.getOuterElement());

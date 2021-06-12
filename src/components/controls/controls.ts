@@ -33,10 +33,11 @@ export default class Controls extends Block {
   render() {
     return compiledTemplate({
       components: {
-        top: this.getChildContent("top"),
-        bottom: this.getChildContent("bottom"),
-        center: this.props.center.map((_: any, index: number) => {
-          return this.getChildContent(`center${index}`);
+        top: this.getChildId("top"),
+        bottom: this.getChildId("bottom"),
+        center: this.props.center.reduce((acc: any, _: any, index: number) => {
+          acc[index] = this.getChildId(`center${index}`);
+          return acc;
         }, {}),
       },
     });

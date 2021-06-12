@@ -35,9 +35,9 @@ export default class Messager extends Block {
   render() {
     return compiledTemplate({
       components: {
-        messagerContact: this.getChildContent("messagerContact"),
-        messagerList: this.getChildContent("messagerList"),
-        messagerForm: this.getChildContent("messagerForm"),
+        messagerContact: this.getChildId("messagerContact"),
+        messagerList: this.getChildId("messagerList"),
+        messagerForm: this.getChildId("messagerForm"),
       },
     });
   }

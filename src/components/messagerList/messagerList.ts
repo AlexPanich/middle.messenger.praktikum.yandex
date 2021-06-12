@@ -24,7 +24,7 @@ export default class MessagerList extends Block {
     return compiledTemplate({
       components: {
         list: this.props.list.reduce((acc: any, _: any, index: number) => {
-          acc[index] = this.getChildContent(`message${index}`);
+          acc[index] = this.getChildId(`message${index}`);
           return acc;
         }, {}),
       },

@@ -1,4 +1,5 @@
 import { Block } from "../../framework/block";
+import Validator, { ValidateRules } from "../../framework/Validator";
 import compiledTemplate from "./change-password.hbs";
 import data from "./change-password-data";
 import "../../helpers/handlebarsHelpers";
@@ -16,6 +17,20 @@ type Props = {
   profile: ProfileContentProps;
 };
 
+const validateRules: ValidateRules = {
+  oldPassword: [
+    { rule: Validator.defaultRegexp.password, errorMessage: "Слишком простой" },
+  ],
+  password: [
+    { rule: Validator.defaultRegexp.password, errorMessage: "Слишком простой" },
+  ],
+  confirmPassword: [
+    { rule: Validator.defaultRegexp.password, errorMessage: "Слишком простой" },
+  ],
+};
+
+const validator: Validator = new Validator(validateRules);
+
 export default class ChangePassword extends Block {
   constructor(props: Props) {
     super(props, {
@@ -28,6 +43,7 @@ export default class ChangePassword extends Block {
         getProps: (props: Props) => ({
           ...props.profile,
           edit: true,
+          validator,
         }),
       },
     });
@@ -36,8 +52,8 @@ export default class ChangePassword extends Block {
   render() {
     return compiledTemplate({
       components: {
-        controls: this.getChildContent("controls"),
-        profileContent: this.getChildContent("profileContent"),
+        controls: this.getChildId("controls"),
+        profileContent: this.getChildId("profileContent"),
       },
     });
   }
@@ -46,4 +62,4 @@ export default class ChangePassword extends Block {
 const changePassword = new ChangePassword(data);
 
 const app = document.getElementById("app") as HTMLElement;
-app.append(changePassword.getContent());
+app.append(changePassword.getOuterElement());

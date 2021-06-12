@@ -25,7 +25,7 @@ export default class Page500 extends Block {
   render() {
     return compiledTemplate({
       components: {
-        errorPageContent: this.getChildContent("errorPageContent"),
+        errorPageContent: this.getChildId("errorPageContent"),
       },
     });
   }
@@ -34,4 +34,4 @@ export default class Page500 extends Block {
 const page500 = new Page500(data);
 
 const app = document.getElementById("app") as HTMLElement;
-app.append(page500.getContent());
+app.append(page500.getOuterElement());

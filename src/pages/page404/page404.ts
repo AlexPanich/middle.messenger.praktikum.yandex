@@ -25,7 +25,7 @@ export default class Page404 extends Block {
   render() {
     return compiledTemplate({
       components: {
-        errorPageContent: this.getChildContent("errorPageContent"),
+        errorPageContent: this.getChildId("errorPageContent"),
       },
     });
   }
@@ -34,4 +34,4 @@ export default class Page404 extends Block {
 const page404 = new Page404(data);
 
 const app = document.getElementById("app") as HTMLElement;
-app.append(page404.getContent());
+app.append(page404.getOuterElement());

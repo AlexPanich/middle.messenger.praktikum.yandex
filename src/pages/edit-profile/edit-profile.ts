@@ -1,4 +1,5 @@
 import { Block } from "../../framework/block";
+import Validator, { ValidateRules } from "../../framework/Validator";
 import compiledTemplate from "./edit-profile.hbs";
 import data from "./edit-profile-data";
 import "../../helpers/handlebarsHelpers";
@@ -16,6 +17,32 @@ type Props = {
   profile: ProfileContentProps;
 };
 
+const validateRules: ValidateRules = {
+  email: [
+    { rule: Validator.defaultRegexp.email, errorMessage: "Некоректный email" },
+  ],
+  login: [
+    { rule: Validator.defaultRegexp.name, errorMessage: "Некоректный логин" },
+  ],
+  firstName: [
+    { rule: Validator.defaultRegexp.name, errorMessage: "Некоректное имя" },
+  ],
+  lastName: [
+    { rule: Validator.defaultRegexp.name, errorMessage: "Некоректное имя" },
+  ],
+  nickName: [
+    { rule: Validator.defaultRegexp.name, errorMessage: "Некоректное имя" },
+  ],
+  phone: [
+    {
+      rule: Validator.defaultRegexp.phone,
+      errorMessage: "Некоректное телефон",
+    },
+  ],
+};
+
+const validator: Validator = new Validator(validateRules);
+
 export default class EditProfile extends Block {
   constructor(props: Props) {
     super(props, {
@@ -29,6 +56,7 @@ export default class EditProfile extends Block {
           ...props.profile,
           edit: true,
           changeAvatar: true,
+          validator,
         }),
       },
     });
@@ -37,8 +65,8 @@ export default class EditProfile extends Block {
   render() {
     return compiledTemplate({
       components: {
-        controls: this.getChildContent("controls"),
-        profileContent: this.getChildContent("profileContent"),
+        controls: this.getChildId("controls"),
+        profileContent: this.getChildId("profileContent"),
       },
     });
   }
@@ -47,4 +75,4 @@ export default class EditProfile extends Block {
 const eidtProfile = new EditProfile(data);
 
 const app = document.getElementById("app") as HTMLElement;
-app.append(eidtProfile.getContent());
+app.append(eidtProfile.getOuterElement());
