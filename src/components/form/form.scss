@@ -23,6 +23,37 @@
     margin-bottom: 16px;
   }
 
+  &__field-wrapper {
+    width: 240px;
+    height: 48px;
+    border-radius: 24px;
+    margin-bottom: 32px;
+    position: relative;
+
+    &::after {
+      content: attr(data-error-text);
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      color: #ff2f2f;
+      font-size: 12px;
+      font-weight: 400;
+      text-align: center;
+      display: none;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &--error {
+      &::after {
+        display: block;
+      }
+    }
+  }
+
   &__field {
     border: none;
     outline: none;
@@ -36,7 +67,7 @@
     background: #f2f7f7;
     color: #7b868f;
     text-align: center;
-    margin-bottom: 32px;
+    position: relative;
   }
 
   &__submit-button {

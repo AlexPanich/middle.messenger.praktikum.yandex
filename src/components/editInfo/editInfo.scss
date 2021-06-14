@@ -26,6 +26,43 @@
     color: #444e59;
   }
 
+  &__value {
+    position: relative;
+
+    &::after {
+      content: attr(data-error-text);
+      position: absolute;
+      top: 0;
+      left: calc(100% + 8px);
+      color: #ff2f2f;
+      font-size: 12px;
+      font-weight: 400;
+      text-align: center;
+      display: none;
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &--error {
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  &__hint {
+    color: #76828c;
+    font-weight: 400;
+    text-align: left;
+    display: none;
+  }
+
+  &__value--error &__hint {
+    display: inline;
+  }
+
   &__field {
     border: none;
     outline: none;

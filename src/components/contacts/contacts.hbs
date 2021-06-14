@@ -1,13 +1,13 @@
 <div class="contacts">
   <div class="contacts__header">
-    {{> search }}
+    {{component "search" components}}
   </div>
   <div class="contacts__content">
     <ul class="contacts__list">
-      {{#each list}}
+      {{#each components.contacts}}
         <li class="contacts__item">
           <a href="/{{../type}}.html" class="contacts__link">
-            {{> contact }}
+            {{component @key ../components/contacts}}
           </a>
         </li>
       {{/each}}

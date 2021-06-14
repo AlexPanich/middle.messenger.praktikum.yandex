@@ -6,12 +6,16 @@
     data-redirect-url={{redirectUrl}}
   >
     {{#each fields}}
-      <input
-        class="form__field"
-        type={{type}}
-        placeholder={{placeholder}}
-        name={{name}}
-      />
+      <label for={{name}} class="form__field-wrapper">
+        <input
+          class="form__field"
+          id={{name}}
+          type={{type}}
+          placeholder={{placeholder}}
+          name={{name}}
+          data-field
+        />
+      </label>
     {{/each}}
     <button
       class="form__submit-button"

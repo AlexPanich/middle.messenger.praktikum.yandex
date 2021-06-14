@@ -1,8 +1,8 @@
 {{#> settingsLayout}}
   {{#*inline "left"}}
-    {{> controls this.controls}}
+    {{component 'controls' components}}
   {{/inline}}
   {{#*inline "right"}}
-    {{> profileContent this.profile}}
+    {{component 'profileContent' components}}
   {{/inline}}
 {{/settingsLayout}}

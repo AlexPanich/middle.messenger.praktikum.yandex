@@ -8,11 +8,16 @@ html,
 }
 
 .layout-empty {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 1200px;
   background-color: #363e47;
+
+  .center-element {
+    max-height: 96%;
+    overflow-y: auto;
+  }
 }
