@@ -36,19 +36,14 @@ interface Fetch {
 }
 
 function queryStringify(data: { [key: string]: any } | FormData) {
-  if (data instanceof FormData) {
-    let params: string[] = [];
-    for (const [key, value] of data.entries()) {
-      params.push(
-        `${encodeURIComponent(key)}=${encodeURIComponent(value.toString())}`
-      );
-    }
-    return params.join("&");
-  }
-  return Object.entries(data)
+  const entries =
+    data instanceof FormData
+      ? Array.from(data.entries())
+      : Object.entries(data);
+  return entries
     .map(
       ([key, value]) =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+        `${encodeURIComponent(key)}=${encodeURIComponent(value.toString())}`
     )
     .join("&");
 }

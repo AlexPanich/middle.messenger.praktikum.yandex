@@ -6,15 +6,18 @@ type CompileContext = {
   [key: string]: any;
 };
 
-export type Events = {
-  selector: string;
+type EventMeta = {
   eventName: string;
   listener: (event: Event) => void;
-}[];
+};
+
+export type ConsturctEvents = ({ selector: string } & EventMeta)[];
+
+type AddedEvents = ({ target: Element } & EventMeta)[];
 
 type Props = {
   [prop: string]: any;
-  events?: Events;
+  events?: ConsturctEvents;
 };
 
 export type ChildrenProps = {
@@ -43,11 +46,7 @@ export abstract class Block {
   private eventBus: EventBus;
   protected children: Children = {};
   private _id: string;
-  private events: {
-    target: Element;
-    eventName: string;
-    listener: (event: Event) => void;
-  }[] = [];
+  private events: AddedEvents = [];
 
   constructor(protected props: Props = {}, children: ChildrenProps = {}) {
     const eventBus = new EventBus();

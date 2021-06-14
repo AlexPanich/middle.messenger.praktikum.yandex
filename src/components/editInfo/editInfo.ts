@@ -12,6 +12,8 @@ export type EditInfoItem = {
   value: string;
   name: string;
   type: string;
+  placeholder?: string;
+  hint?: string;
 };
 
 type Props = {

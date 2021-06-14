@@ -7,14 +7,19 @@
     <ul class="edit-info__list">
       {{#each data}}
         <li class="edit-info__item">
-          <div class="edit-info__key">{{ruName}}</div>
+          <label for={{name}} class="edit-info__key">{{ruName}}</label>
           <div class="edit-info__value">
+            {{#if hint}}
+              <span class="edit-info__hint">{{hint}}</span>
+            {{/if}}
             <input
               class="edit-info__field"
+              id={{name}}
               type={{type}}
               name={{name}}
               value="{{value}}"
               data-field
+              {{#if placeholder}}placeholder={{placeholder}}{{/if}}
             />
           </div>
         </li>

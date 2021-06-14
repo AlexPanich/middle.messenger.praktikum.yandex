@@ -15,7 +15,7 @@ export function createListChildrenProps<P, C>(
 ): ChildrenProps {
   // @ts-ignore
   return props[propName].reduce<ChildrenProps>(
-    (acc: ChildrenProps, _, index: number) => {
+    (acc: ChildrenProps, _: any, index: number) => {
       acc[`${prefix}${index}`] = {
         // @ts-ignore
         component: Component,

@@ -1,6 +1,6 @@
 import { Block, ChildrenProps } from "../../framework/block";
 import compiledTemplate from "./profileContent.hbs";
-import Aratar from "../avatar/avatar";
+import Avatar from "../avatar/avatar";
 import Info, { InfoItem } from "../info/info";
 import EditInfo, { EditInfoItem } from "../editInfo/editInfo";
 import { Validate } from "../../framework/validator";
@@ -24,7 +24,7 @@ export default class ProfileContent extends Block {
     const { validator, ...restProps } = props;
     const children: ChildrenProps = {
       avatar: {
-        component: Aratar,
+        component: Avatar,
         getProps: (props: Props) => ({ link: props.avatar, size: 192 }),
       },
     };

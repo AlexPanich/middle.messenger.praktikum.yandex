@@ -15,7 +15,8 @@ export default class Validator implements Validate {
     password: /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{8,}$/,
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     name: /^([А-Яа-яA-Za-z0-9_]{1,20})$/,
-    phone: /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/,
+    phone:
+      /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d[- .]?\d\d$/,
   };
 
   constructor(private rules: ValidateRules) {}

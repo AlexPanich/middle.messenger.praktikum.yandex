@@ -6,13 +6,15 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: auto;
 
   &__avatar {
-    margin-top: 136px;
+    margin-top: min(136px, 16vh);
     margin-bottom: 40px;
     position: relative;
     border-radius: 50%;
     overflow: hidden;
+    flex-shrink: 0;
 
     &--big-margin {
       margin-bottom: 106px;

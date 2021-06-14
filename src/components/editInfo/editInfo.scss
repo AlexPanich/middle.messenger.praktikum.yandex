@@ -52,6 +52,17 @@
     }
   }
 
+  &__hint {
+    color: #76828c;
+    font-weight: 400;
+    text-align: left;
+    display: none;
+  }
+
+  &__value--error &__hint {
+    display: inline;
+  }
+
   &__field {
     border: none;
     outline: none;

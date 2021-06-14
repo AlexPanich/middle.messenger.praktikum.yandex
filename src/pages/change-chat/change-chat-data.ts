@@ -1,4 +1,4 @@
-import myAratarIcon from "../../images/my-avatar.svg";
+import myAvatarIcon from "../../images/my-avatar.svg";
 import chatIcon from "../../images/chat.svg";
 import userIcon from "../../images/user.svg";
 import logOutIcon from "../../images/log-out.svg";
@@ -13,7 +13,7 @@ const data = {
   controls: {
     top: {
       link: "/profile.html",
-      avatar: myAratarIcon,
+      avatar: myAvatarIcon,
     },
     center: [
       {
