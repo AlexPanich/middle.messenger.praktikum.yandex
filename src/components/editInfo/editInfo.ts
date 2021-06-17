@@ -1,5 +1,5 @@
 import { Block } from "../../framework/block";
-import { Validate } from "../../framework/validator";
+import Validator, { ValidateRules } from "../../framework/validator";
 import compiledTemplate from "./editInfo.hbs";
 import {
   getDefaultListenerForFormSubmit,
@@ -19,30 +19,24 @@ export type EditInfoItem = {
 type Props = {
   data: EditInfoItem[];
   redirectUrl: string;
-};
-
-type ValidatorProps = {
-  validator: Validate;
+  validateRules: ValidateRules;
 };
 
 export default class EditInfo extends Block {
-  constructor(props: Props & ValidatorProps) {
-    const { validator, ...restProps } = props;
-    super({
-      ...restProps,
-      events: [
-        ...getDefaultListenersForValidation(
-          validator,
-          "input",
-          "edit-info__value--error"
-        ),
-        getDefaultListenerForFormSubmit(
-          validator,
-          "form",
-          "edit-info__value--error"
-        ),
-      ],
-    });
+  registerEventListeners(props: Props) {
+    const validator = new Validator(props.validateRules);
+    return [
+      ...getDefaultListenersForValidation(
+        validator,
+        "input",
+        "edit-info__value--error"
+      ),
+      getDefaultListenerForFormSubmit(
+        validator,
+        "form",
+        "edit-info__value--error"
+      ),
+    ];
   }
 
   render() {

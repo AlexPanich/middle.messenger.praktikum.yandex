@@ -14,7 +14,7 @@ import "./edit-profile.scss";
 
 type Props = {
   controls: ControlsProps;
-  profile: ProfileContentProps;
+  profile: Omit<ProfileContentProps, "validateRules">;
 };
 
 const validateRules: ValidateRules = {
@@ -41,25 +41,23 @@ const validateRules: ValidateRules = {
   ],
 };
 
-const validator: Validator = new Validator(validateRules);
-
 export default class EditProfile extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       controls: {
         component: Controls,
-        getProps: (props: Props) => ({ ...props.controls }),
+        getProps: (props: Props): ControlsProps => ({ ...props.controls }),
       },
       profileContent: {
         component: ProfileContent,
-        getProps: (props: Props) => ({
+        getProps: (props: Props): ProfileContentProps => ({
           ...props.profile,
           edit: true,
           changeAvatar: true,
-          validator,
+          validateRules,
         }),
       },
-    });
+    };
   }
 
   render() {

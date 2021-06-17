@@ -1,6 +1,6 @@
 import { Block } from "../../framework/block";
 import compiledTemplate from "./contact.hbs";
-import Avatar from "../avatar/avatar";
+import Avatar, { Props as AvatarProps } from "../avatar/avatar";
 import "./contact.scss";
 
 export type Props = {
@@ -13,12 +13,19 @@ export type Props = {
 
 export default class Contact extends Block {
   constructor(props: Props) {
-    super(props, {
+    super(props);
+  }
+
+  registerComponents() {
+    return {
       avatar: {
         component: Avatar,
-        getProps: (props: Props) => ({ link: props.avatar, size: 64 }),
+        getProps: (props: Props): AvatarProps => ({
+          link: props.avatar,
+          size: 64,
+        }),
       },
-    });
+    };
   }
 
   render() {

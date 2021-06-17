@@ -1,5 +1,4 @@
 import { Block } from "../../framework/block";
-import { createListChildrenProps } from "../../framework/utils";
 import compiledTemplate from "./controls.hbs";
 import Tab, { Props as TabProps } from "../tab/tab";
 import "./controls.scss";
@@ -11,32 +10,27 @@ export type Props = {
 };
 
 export default class Controls extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       top: {
         component: Tab,
-        getProps: (props: Props) => ({ ...props.top }),
+        getProps: (props: Props): TabProps => props.top,
       },
       bottom: {
         component: Tab,
-        getProps: (props: Props) => ({ ...props.bottom }),
+        getProps: (props: Props): TabProps => props.bottom,
       },
-      ...createListChildrenProps<Props, new (props: TabProps) => Tab>(
-        props,
-        "center",
-        Tab,
-        "center"
-      ),
-    });
+      center: [
+        {
+          component: Tab,
+          getProps: (props: Props) => props.center,
+        },
+      ],
+    };
   }
 
   render() {
-    const context = this.createCompileContext({
-      components: {
-        center: this.createComponentsList(this.props.center, "center"),
-      },
-    });
-
+    const context = this.createCompileContext();
     return compiledTemplate(context);
   }
 }

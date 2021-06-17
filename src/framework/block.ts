@@ -17,24 +17,35 @@ type AddedEvents = ({ target: Element } & EventMeta)[];
 
 type Props = {
   [prop: string]: any;
-  events?: ConsturctEvents;
+};
+
+export type ConstructChild = {
+  component: new (props: Props) => Block;
+  getProps: (props: Props) => Props;
 };
 
 export type ChildrenProps = {
-  [name: string]: {
-    component: new (props: Props) => Block;
-    getProps: (props: Props) => Props;
-  };
+  [name: string]: ConstructChild | ConstructChild[];
 };
 
 type Children = {
   [name: string]: {
     component: Block;
     getProps: (props: Props) => Props;
+    arrayName?: string;
+    index?: number;
   };
 };
 
-export abstract class Block {
+interface PublicMethods {
+  setProps: (nextProps: Props) => void;
+  getInnerElement: () => HTMLElement;
+  getOuterElement: () => HTMLElement;
+  show: () => void;
+  hide: () => void;
+}
+
+export abstract class Block implements PublicMethods {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -47,11 +58,13 @@ export abstract class Block {
   protected children: Children = {};
   private _id: string;
   private events: AddedEvents = [];
+  protected _eventListeners: ConsturctEvents = [];
 
-  constructor(protected props: Props = {}, children: ChildrenProps = {}) {
+  constructor(protected props: Props = {}) {
     const eventBus = new EventBus();
     this.eventBus = eventBus;
-    this._initChildren(children, props);
+    this._registerComponents(props);
+    this._registerEventListeners(props);
     this.props = this._makePropsProxy(props);
     this._id = makeUUID();
     this._registerEvents(eventBus);
@@ -60,6 +73,20 @@ export abstract class Block {
 
   private _initChildren(children: ChildrenProps, props: Props): void {
     Object.entries(children).forEach(([name, meta]) => {
+      if (Array.isArray(meta)) {
+        const example = meta[0];
+        const array = example.getProps(props) as Props[];
+        array.forEach((item, index: number) => {
+          const getProps = (props: Props) => example.getProps(props)[index];
+          this.children[name + index] = {
+            component: new example.component(item),
+            getProps,
+            arrayName: name,
+            index,
+          };
+        });
+        return;
+      }
       const { component, getProps } = meta;
       const childProps: Props = getProps(props);
       this.children[name] = {
@@ -87,7 +114,7 @@ export abstract class Block {
     this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  protected _createDocumentElement(tagName: string): HTMLElement {
+  private _createDocumentElement(tagName: string): HTMLElement {
     return document.createElement(tagName);
   }
 
@@ -119,11 +146,11 @@ export abstract class Block {
     Object.assign(this.props, nextProps);
   };
 
-  get element(): HTMLElement {
+  protected get element(): HTMLElement {
     return this._element;
   }
 
-  get id(): string {
+  protected get id(): string {
     return this._id;
   }
 
@@ -152,9 +179,7 @@ export abstract class Block {
   }
 
   private _addEvents(): void {
-    const { events = [] } = this.props;
-
-    events.forEach(({ selector, eventName, listener }) => {
+    this._eventListeners.forEach(({ selector, eventName, listener }) => {
       const targets = this._element.querySelectorAll(selector);
       Array.from(targets).forEach((target) => {
         target.addEventListener(eventName, listener);
@@ -182,7 +207,7 @@ export abstract class Block {
     return this.element;
   }
 
-  public getChildContent(name: string) {
+  protected getChildContent(name: string) {
     const child = this.children[name];
     if (!child) {
       return null;
@@ -190,7 +215,7 @@ export abstract class Block {
     return child.component.getInnerElement();
   }
 
-  public getChildId(name: string): string | null {
+  protected getChildId(name: string): string | null {
     const child = this.children[name];
     if (!child) {
       return null;
@@ -198,7 +223,7 @@ export abstract class Block {
     return child.component.id;
   }
 
-  public getChildElementById(id: string): Block | null {
+  protected getChildElementById(id: string): Block | null {
     const child = Object.values(this.children).find(
       (child) => child.component.id === id
     );
@@ -208,7 +233,7 @@ export abstract class Block {
     return child.component;
   }
 
-  public createCompileContext(
+  protected createCompileContext(
     customContext: CompileContext = {}
   ): CompileContext {
     const context = { ...this.props };
@@ -217,9 +242,21 @@ export abstract class Block {
     }
 
     context.components = Object.entries(this.children).reduce<{
-      [name: string]: string;
+      [name: string]: string | string[];
     }>((acc, [name, child]) => {
-      acc[name] = child.component.id;
+      if (
+        typeof child.arrayName === "string" &&
+        typeof child.index === "number"
+      ) {
+        const { arrayName, index } = child;
+        if (!acc[arrayName]) {
+          acc[arrayName] = [];
+        }
+        const arr = acc[arrayName] as string[];
+        arr[index] = child.component.id;
+      } else {
+        acc[name] = child.component.id;
+      }
       return acc;
     }, {});
 
@@ -231,7 +268,7 @@ export abstract class Block {
     return { ...context, ...restCustomContext };
   }
 
-  public createComponentsList(
+  protected createComponentsList(
     list: any[],
     prefix: string
   ): { [name: string]: string } {
@@ -245,7 +282,25 @@ export abstract class Block {
     }, {});
   }
 
-  protected _makePropsProxy(props: Props): Props {
+  private _registerComponents(props: Props) {
+    const components = this.registerComponents(props);
+    this._initChildren(components, props);
+  }
+
+  protected registerComponents(_props: Props): ChildrenProps {
+    const components: ChildrenProps = {};
+    return components;
+  }
+
+  private _registerEventListeners(props: Props) {
+    this._eventListeners = this.registerEventListeners(props);
+  }
+
+  protected registerEventListeners(_props: Props): ConsturctEvents {
+    return [];
+  }
+
+  private _makePropsProxy(props: Props): Props {
     const self = this;
 
     const propsProxy = new Proxy(props, {

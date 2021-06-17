@@ -1,5 +1,5 @@
 import { Block } from "../../framework/block";
-import { Validate } from "../../framework/validator";
+import Validator, { ValidateRules } from "../../framework/validator";
 import compiledTemplate from "./form.hbs";
 import {
   getDefaultListenerForFormSubmit,
@@ -22,30 +22,24 @@ export type Props = {
     link: string;
     text: string;
   };
-};
-
-type ValidatorProps = {
-  validator: Validate;
+  validateRules: ValidateRules;
 };
 
 export default class Form extends Block {
-  constructor(props: Props & ValidatorProps) {
-    const { validator, ...restProps } = props;
-    super({
-      ...restProps,
-      events: [
-        ...getDefaultListenersForValidation(
-          validator,
-          "input",
-          "form__field-wrapper--error"
-        ),
-        getDefaultListenerForFormSubmit(
-          validator,
-          "form",
-          "form__field-wrapper--error"
-        ),
-      ],
-    });
+  registerEventListeners(props: Props) {
+    const validator = new Validator(props.validateRules);
+    return [
+      ...getDefaultListenersForValidation(
+        validator,
+        "input",
+        "form__field-wrapper--error"
+      ),
+      getDefaultListenerForFormSubmit(
+        validator,
+        "form",
+        "form__field-wrapper--error"
+      ),
+    ];
   }
 
   render() {

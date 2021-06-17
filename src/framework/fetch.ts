@@ -40,12 +40,7 @@ function queryStringify(data: { [key: string]: any } | FormData) {
     data instanceof FormData
       ? Array.from(data.entries())
       : Object.entries(data);
-  return entries
-    .map(
-      ([key, value]) =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(value.toString())}`
-    )
-    .join("&");
+  return new URLSearchParams(entries).toString();
 }
 
 export class HTTPTransport implements Fetch {
