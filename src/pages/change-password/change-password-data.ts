@@ -1,4 +1,4 @@
-import myAratarIcon from "../../images/my-avatar.svg";
+import myAvatarIcon from "../../images/my-avatar.svg";
 import logOutIcon from "../../images/log-out.svg";
 import backIcon from "../../images/left-arrow-icon.svg";
 import infoIcon from "../../images/info-icon.svg";
@@ -31,7 +31,7 @@ const data = {
     },
   },
   profile: {
-    avatar: myAratarIcon,
+    avatar: myAvatarIcon,
     redirectUrl: "/profile.html",
     data: [
       {
@@ -39,18 +39,24 @@ const data = {
         ruName: "Старый пароль",
         value: "qwer1234",
         type: "password",
+        placeholder: "Пароль",
+        hint: "Пример: Qwer1234",
       },
       {
         name: "password",
         ruName: "Новый пароль",
         value: "qwerty123456",
         type: "password",
+        placeholder: "Пароль",
+        hint: "Пример: Qwer1234",
       },
       {
         name: "confirmPassword",
         ruName: "Повторите новый пароль",
         value: "qwerty123456",
         type: "password",
+        placeholder: "Пароль",
+        hint: "Пример: Qwer1234",
       },
     ],
   },

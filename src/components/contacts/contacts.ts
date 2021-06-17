@@ -1,5 +1,4 @@
 import { Block } from "../../framework/block";
-import { createListChildrenProps } from "../../framework/utils";
 import compiledTemplate from "./contacts.hbs";
 import Search from "../search/search";
 import Contact, { Props as ContactProps } from "../contact/contact";
@@ -11,28 +10,23 @@ export type Props = {
 };
 
 export default class Contacts extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       search: {
         component: Search,
         getProps: (_props: Props) => ({}),
       },
-      ...createListChildrenProps<Props, new (props: ContactProps) => Contact>(
-        props,
-        "list",
-        Contact,
-        "contact"
-      ),
-    });
+      contacts: [
+        {
+          component: Contact,
+          getProps: (props: Props) => props.list,
+        },
+      ],
+    };
   }
 
   render() {
-    const context = this.createCompileContext({
-      components: {
-        contacts: this.createComponentsList(this.props.list, "contact"),
-      },
-    });
-
+    const context = this.createCompileContext();
     return compiledTemplate(context);
   }
 }

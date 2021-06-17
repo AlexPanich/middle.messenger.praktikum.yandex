@@ -15,4 +15,9 @@ html,
   align-items: center;
   min-width: 1200px;
   background-color: #363e47;
+
+  .center-element {
+    max-height: 96%;
+    overflow-y: auto;
+  }
 }

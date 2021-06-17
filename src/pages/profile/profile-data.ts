@@ -1,4 +1,4 @@
-import myAratarIcon from "../../images/my-avatar.svg";
+import myAvatarIcon from "../../images/my-avatar.svg";
 import logOutIcon from "../../images/log-out.svg";
 import backIcon from "../../images/left-arrow-icon.svg";
 import infoIcon from "../../images/info-icon.svg";
@@ -31,7 +31,7 @@ const data = {
     },
   },
   profile: {
-    avatar: myAratarIcon,
+    avatar: myAvatarIcon,
     name: "Александр",
     data: [
       {

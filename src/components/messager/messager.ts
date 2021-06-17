@@ -6,7 +6,9 @@ import MessagerContact, {
 import MessagerList, {
   Props as MessagerListProps,
 } from "../messagerList/messagerList";
-import MessagerForm from "../messagerForm/messagerForm";
+import MessagerForm, {
+  Props as MessagerFormProps,
+} from "../messagerForm/messagerForm";
 import "./messager.scss";
 
 export type Props = {
@@ -15,21 +17,23 @@ export type Props = {
 };
 
 export default class Messager extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       messagerContact: {
         component: MessagerContact,
-        getProps: (props: Props) => ({ ...props.contact }),
+        getProps: (props: Props): MessagerContactProps => ({
+          ...props.contact,
+        }),
       },
       messagerList: {
         component: MessagerList,
-        getProps: (props: Props) => ({ ...props.content }),
+        getProps: (props: Props): MessagerListProps => ({ ...props.content }),
       },
       messagerForm: {
         component: MessagerForm,
-        getProps: (_props: Props) => ({}),
+        getProps: (_props: Props): MessagerFormProps => ({}),
       },
-    });
+    };
   }
 
   render() {

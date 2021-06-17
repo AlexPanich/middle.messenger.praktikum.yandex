@@ -7,15 +7,11 @@ export type InfoItem = {
   value: string;
 };
 
-type Props = {
+export type Props = {
   data: InfoItem[];
 };
 
 export default class Info extends Block {
-  constructor(props: Props) {
-    super(props);
-  }
-
   render() {
     const context = this.createCompileContext();
     return compiledTemplate(context);

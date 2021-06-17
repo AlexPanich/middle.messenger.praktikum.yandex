@@ -8,26 +8,26 @@ import Form, { Props as FormProps } from "../../components/form/form";
 import "./registration.scss";
 
 type Props = {
-  form: FormProps;
+  form: Omit<FormProps, "validateRules">;
 };
 
 const validateRules: ValidateRules = {
   email: [
-    { rule: Validator.defaultRegexp.email, errorMessage: "Некоректный email" },
+    { rule: Validator.defaultRegexp.email, errorMessage: "Некорректный email" },
   ],
   login: [
-    { rule: Validator.defaultRegexp.name, errorMessage: "Некоректный логин" },
+    { rule: Validator.defaultRegexp.name, errorMessage: "Некорректный логин" },
   ],
   firstName: [
-    { rule: Validator.defaultRegexp.name, errorMessage: "Некоректное имя" },
+    { rule: Validator.defaultRegexp.name, errorMessage: "Некорректное имя" },
   ],
   lastName: [
-    { rule: Validator.defaultRegexp.name, errorMessage: "Некоректное имя" },
+    { rule: Validator.defaultRegexp.name, errorMessage: "Некорректное имя" },
   ],
   phone: [
     {
       rule: Validator.defaultRegexp.phone,
-      errorMessage: "Некоректное телефон",
+      errorMessage: "Некорректное телефон",
     },
   ],
   password: [
@@ -38,16 +38,17 @@ const validateRules: ValidateRules = {
   ],
 };
 
-const validator: Validator = new Validator(validateRules);
-
 export default class Registration extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       form: {
         component: Form,
-        getProps: (props: Props) => ({ ...props.form, validator }),
+        getProps: (props: Props): FormProps => ({
+          ...props.form,
+          validateRules,
+        }),
       },
-    });
+    };
   }
 
   render() {

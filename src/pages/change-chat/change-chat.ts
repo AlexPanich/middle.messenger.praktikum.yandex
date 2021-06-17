@@ -20,17 +20,20 @@ type Props = {
 };
 
 export default class ChangeChat extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       controls: {
         component: Controls,
-        getProps: (props: Props) => ({ ...props.controls }),
+        getProps: (props: Props): ControlsProps => ({ ...props.controls }),
       },
       contacts: {
         component: Contacts,
-        getProps: (props: Props) => ({ ...props.contacts, type: "chat" }),
+        getProps: (props: Props): ContactsProps => ({
+          ...props.contacts,
+          type: "chat",
+        }),
       },
-    });
+    };
   }
 
   render() {

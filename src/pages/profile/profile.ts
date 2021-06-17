@@ -17,17 +17,17 @@ type Props = {
 };
 
 export default class Profile extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       controls: {
         component: Controls,
-        getProps: (props: Props) => ({ ...props.controls }),
+        getProps: (props: Props): ControlsProps => ({ ...props.controls }),
       },
       profileContent: {
         component: ProfileContent,
-        getProps: (props: Props) => ({ ...props.profile }),
+        getProps: (props: Props): ProfileContentProps => ({ ...props.profile }),
       },
-    });
+    };
   }
 
   render() {

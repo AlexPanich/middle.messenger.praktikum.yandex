@@ -1,9 +1,9 @@
-import { Block, ChildrenProps } from "../../framework/block";
+import { Block } from "../../framework/block";
 import compiledTemplate from "./profileContent.hbs";
-import Aratar from "../avatar/avatar";
-import Info, { InfoItem } from "../info/info";
+import Avatar, { Props as AvatarProps } from "../avatar/avatar";
+import Info, { InfoItem, Props as InfoProps } from "../info/info";
 import EditInfo, { EditInfoItem } from "../editInfo/editInfo";
-import { Validate } from "../../framework/validator";
+import { ValidateRules } from "../../framework/validator";
 import "./profileContent.scss";
 
 export type Props = {
@@ -13,49 +13,36 @@ export type Props = {
   edit?: boolean;
   changeAvatar?: boolean;
   redirectUrl?: string;
-};
-
-type ValidatorProps = {
-  validator?: Validate;
+  validateRules?: ValidateRules;
 };
 
 export default class ProfileContent extends Block {
-  constructor(props: Props & ValidatorProps) {
-    const { validator, ...restProps } = props;
-    const children: ChildrenProps = {
+  registerComponents() {
+    return {
       avatar: {
-        component: Aratar,
-        getProps: (props: Props) => ({ link: props.avatar, size: 192 }),
+        component: Avatar,
+        getProps: (props: Props): AvatarProps => ({
+          link: props.avatar,
+          size: 192,
+        }),
       },
-    };
-    if (props.edit) {
-      children["editInfo"] = {
+      editInfo: {
         component: EditInfo,
         getProps: (props: Props) => ({
           data: props.data,
           redirectUrl: props.redirectUrl,
-          validator,
+          validateRules: props.validateRules,
         }),
-      };
-    } else {
-      children["info"] = {
+      },
+      info: {
         component: Info,
-        getProps: (props: Props) => ({ data: props.data }),
-      };
-    }
-    super(restProps, children);
+        getProps: (props: Props): InfoProps => ({ data: props.data }),
+      },
+    };
   }
 
   render() {
-    const components: { [name: string]: string } = {};
-    if (this.props.edit) {
-      components["editInfo"] = this.getChildId("editInfo");
-    } else {
-      components["info"] = this.getChildId("info");
-    }
-
-    const context = this.createCompileContext({ components });
-
+    const context = this.createCompileContext();
     return compiledTemplate(context);
   }
 }

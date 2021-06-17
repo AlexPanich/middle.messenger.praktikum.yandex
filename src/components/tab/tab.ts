@@ -10,13 +10,13 @@ export type Props = {
 };
 
 export default class Tab extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       avatar: {
         component: Avatar,
         getProps: (props: Props) => ({ link: props.avatar, size: 64 }),
       },
-    });
+    };
   }
 
   render() {

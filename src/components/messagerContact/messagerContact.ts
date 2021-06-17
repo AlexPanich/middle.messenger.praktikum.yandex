@@ -1,6 +1,6 @@
 import { Block } from "../../framework/block";
 import compiledTemplate from "./messagerContact.hbs";
-import Aratar from "../avatar/avatar";
+import Avatar from "../avatar/avatar";
 import "./messagerContact.scss";
 
 export type Props = {
@@ -12,7 +12,7 @@ export default class MessagerContact extends Block {
   constructor(props: Props) {
     super(props, {
       avatar: {
-        component: Aratar,
+        component: Avatar,
         getProps: (props: Props) => ({ link: props.avatar, size: 64 }),
       },
     });

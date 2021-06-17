@@ -1,3 +1,4 @@
+import { ConsturctEvents } from "../framework/block";
 import { Validate } from "../framework/validator";
 
 export function setErrorAttributes(
@@ -23,7 +24,7 @@ export function getDefaultListenersForValidation(
   validator: Validate,
   selectorField: string,
   errorClassName: string
-) {
+): ConsturctEvents {
   return [
     {
       selector: selectorField,
