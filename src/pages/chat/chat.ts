@@ -21,21 +21,24 @@ type Props = {
 };
 
 export default class Chat extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       controls: {
         component: Controls,
-        getProps: (props: Props) => ({ ...props.controls }),
+        getProps: (props: Props): ControlsProps => ({ ...props.controls }),
       },
       contacts: {
         component: Contacts,
-        getProps: (props: Props) => ({ ...props.contacts, type: "chat" }),
+        getProps: (props: Props): ContactsProps => ({
+          ...props.contacts,
+          type: "chat",
+        }),
       },
       messager: {
         component: Messager,
-        getProps: (props: Props) => ({ ...props.messager }),
+        getProps: (props: Props): MessagerProps => ({ ...props.messager }),
       },
-    });
+    };
   }
 
   render() {

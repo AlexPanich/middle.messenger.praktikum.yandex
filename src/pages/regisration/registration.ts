@@ -8,7 +8,7 @@ import Form, { Props as FormProps } from "../../components/form/form";
 import "./registration.scss";
 
 type Props = {
-  form: FormProps;
+  form: Omit<FormProps, "validateRules">;
 };
 
 const validateRules: ValidateRules = {
@@ -38,16 +38,17 @@ const validateRules: ValidateRules = {
   ],
 };
 
-const validator: Validator = new Validator(validateRules);
-
 export default class Registration extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       form: {
         component: Form,
-        getProps: (props: Props) => ({ ...props.form, validator }),
+        getProps: (props: Props): FormProps => ({
+          ...props.form,
+          validateRules,
+        }),
       },
-    });
+    };
   }
 
   render() {

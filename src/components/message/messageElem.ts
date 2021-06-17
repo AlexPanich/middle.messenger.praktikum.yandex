@@ -12,10 +12,6 @@ export type Props = {
 };
 
 export default class MessageElem extends Block {
-  constructor(props: Props) {
-    super(props);
-  }
-
   render() {
     const context = this.createCompileContext();
     return compiledTemplate(context);

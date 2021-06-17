@@ -13,13 +13,15 @@ type Props = {
 };
 
 export default class Page500 extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       errorPageContent: {
         component: ErrorPageContent,
-        getProps: (props: Props) => ({ ...props.content }),
+        getProps: (props: Props): ErrorPageContentProps => ({
+          ...props.content,
+        }),
       },
-    });
+    };
   }
 
   render() {

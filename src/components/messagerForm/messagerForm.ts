@@ -11,7 +11,7 @@ import {
   setErrorAttributes,
 } from "../../helpers/validateHelpers";
 
-type Props = {};
+export type Props = {};
 
 const validateRules: ValidateRules = {
   message: [
@@ -63,22 +63,19 @@ function handleFocus(event: Event): void {
 }
 
 export default class MessagerForm extends Block {
-  constructor(props: Props) {
-    super({
-      ...props,
-      events: [
-        {
-          selector: "form",
-          eventName: "submit",
-          listener: handleSubmit,
-        },
-        {
-          selector: 'input[name="message"]',
-          eventName: "focus",
-          listener: handleFocus,
-        },
-      ],
-    });
+  registerEventListeners() {
+    return [
+      {
+        selector: "form",
+        eventName: "submit",
+        listener: handleSubmit,
+      },
+      {
+        selector: 'input[name="message"]',
+        eventName: "focus",
+        listener: handleFocus,
+      },
+    ];
   }
 
   render() {

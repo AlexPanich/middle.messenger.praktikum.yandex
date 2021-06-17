@@ -21,21 +21,24 @@ type Props = {
 };
 
 export default class Users extends Block {
-  constructor(props: Props) {
-    super(props, {
+  registerComponents() {
+    return {
       controls: {
         component: Controls,
-        getProps: (props: Props) => ({ ...props.controls }),
+        getProps: (props: Props): ControlsProps => ({ ...props.controls }),
       },
       contacts: {
         component: Contacts,
-        getProps: (props: Props) => ({ ...props.contacts, type: "users" }),
+        getProps: (props: Props): ContactsProps => ({
+          ...props.contacts,
+          type: "users",
+        }),
       },
       profileContent: {
         component: ProfileContent,
-        getProps: (props: Props) => ({ ...props.profile }),
+        getProps: (props: Props): ProfileContentProps => ({ ...props.profile }),
       },
-    });
+    };
   }
 
   render() {
